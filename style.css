@@ -5,25 +5,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-#container {
-    max-width: 800px;
+  }
+  
+  #container {
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
     display: none;
-}
-
-.chart {
-    margin-bottom: 40px;
-}
-
-.chart-title {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.login-container {
+  }
+  
+  /* Login container styles */
+  .login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,67 +23,87 @@ body {
     max-width: 400px;
     width: 100%;
     margin: 0 auto;
-}
-
-.login-input {
+  }
+  
+  .login-input {
     margin-bottom: 10px;
     padding: 8px;
     width: 100%;
     box-sizing: border-box;
-}
-
-.login-button {
+  }
+  
+  .login-button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     border: none;
     cursor: pointer;
     width: 100%;
-}
-
-.login-button:hover {
+  }
+  
+  .login-button:hover {
     background-color: #45a049;
-}
-
-.header {
+  }
+  
+  /* Header and logout button */
+  .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
-}
-
-.header img {
-    width: 100px;
-}
-
-.logout-button {
+  }
+  
+  .logout-button {
     padding: 10px 20px;
     background-color: #f44336;
     color: white;
     border: none;
     cursor: pointer;
-}
-
-.logout-button:hover {
+  }
+  
+  .logout-button:hover {
     background-color: #d32f2f;
-}
-
-.display {
+  }
+  
+  /* Info sections */
+  .info-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .info-box {
+    flex: 1 1 350px;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  
+  /* Charts section */
+  .charts-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.display button {
-    margin: 5px;
-    padding: 10px 20px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.display button:hover {
-    background-color: #1976d2;
-}
+  }
+  
+  .chart-box {
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  
+  .chart {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  

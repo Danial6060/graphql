@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GraphQL Profile</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GraphQL Profile</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="login" class="login-container">
-        <h1>Login</h1>
-        <input type="text" id="username" class="login-input" placeholder="Username or Email">
-        <input type="password" id="password" class="login-input" placeholder="Password">
-        <button id="loginButton" class="login-button">Login</button>
+  <div id="login" class="login-container">
+    <h1>GraphQL Login</h1>
+    <input type="text" id="username" class="login-input" placeholder="Username or Email" />
+    <input type="password" id="password" class="login-input" placeholder="Password" />
+    <button id="loginButton" class="login-button">Login</button>
+  </div>
+
+  <div id="container">
+    <div class="header">
+      <button id="logoutButton" class="logout-button">Logout</button>
     </div>
 
-    
+    <!-- Info Section -->
+    <div class="info-section">
+      <div class="info-box">
+        <h2>User Info</h2>
+        <div id="userInfo"></div>
+      </div>
+      <div class="info-box">
+        <h2>Audit Info</h2>
+        <div id="auditInfo"></div>
+      </div>
+    </div>
 
-    <div id="container">
-        <div class="header">
-         
-            <button id="logoutButton" class="logout-button">Logout</button>
-        </div>
-        <h2 id="welcomeMessage"></h2>
-     
-        
-       
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <div class="chart-box">
         <div id="levelChart" class="chart"></div>
-     
+      </div>
+      <div class="chart-box">
         <div id="skillsChart" class="chart"></div>
+      </div>
+      <div class="chart-box">
         <div id="xpChart" class="chart"></div>
+      </div>
     </div>
+  </div>
 
-    <script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
