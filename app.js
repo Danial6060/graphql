@@ -176,8 +176,8 @@ function renderUserProfile(user) {
 
     // Audit Info
     auditInfoDiv.innerHTML = `
-        <p>Audit XP Received: ${formatXP(user.totalUp)}</p>
-        <p>Audit XP Given: ${formatXP(user.totalDown)}</p>
+        <p>Audit XP Given: ${formatXP(user.totalUp)}</p>
+        <p>Audit XP Received: ${formatXP(user.totalDown)}</p>
         <p>Audit Ratio: ${user.auditRatio.toFixed(2)}</p>
     `;
 }
