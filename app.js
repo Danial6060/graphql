@@ -31,7 +31,7 @@ const userQuery = `
 
 const xpModelQuery = `
     query Transaction {
-        transaction(order_by: { createdAt: asc }, where: { type: { _eq: "xp" }, path: { _niregex: "piscine-js/|piscine-bh"  _iregex: "bh-module"} }) {
+        transaction(order_by: { createdAt: asc }, where: { type: { _eq: "xp" }, path: { _niregex: "piscine-js/|piscine-bh", _iregex: "bh-module"} }) {
             amount
             attrs
             createdAt
@@ -67,6 +67,16 @@ const skillsQuery = `
 
 let token = null;
 
+// Check for stored token on page load
+window.addEventListener('load', () => {
+    token = sessionStorage.getItem('token');
+    if (token) {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('container').style.display = 'block';
+        loadUserData();
+    }
+});
+
 // Authentication function
 async function AuthUser(encodedCredentials) {
     try {
@@ -82,6 +92,8 @@ async function AuthUser(encodedCredentials) {
 
         if (!result.error) {
             token = result;
+            // Store token in sessionStorage for persistence
+            sessionStorage.setItem('token', token);
             return true; // Login successful
         } else {
             alert(result.error); // Display error message
@@ -136,6 +148,7 @@ document.getElementById('loginButton').addEventListener('click', async () => {
 // Event listener for logout button
 document.getElementById('logoutButton').addEventListener('click', () => {
     token = null;
+    sessionStorage.removeItem('token'); // Clear stored token
     // Hide container, show login
     document.getElementById('container').style.display = 'none';
     document.getElementById('login').style.display = 'block';
@@ -481,12 +494,17 @@ function xpSVG(data) {
         const x = (index / (monthXp.length - 1)) * (w - 50) + 20;
         const y = 280 - ((element[1] || 0) / maxXP) * 200;
 
-        // Circle for data point
+        // Circle for data point with tooltip on hover
         const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         circle.setAttribute("cx", x);
         circle.setAttribute("cy", y);
         circle.setAttribute("r", 3);
         circle.setAttribute("fill", "green");
+        // Append tooltip (shows the XP value)
+        circle.setAttribute("pointer-events", "visiblePainted");
+        const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        title.textContent = `XP: ${element[1]}`;
+        circle.appendChild(title);
         svg.appendChild(circle);
 
         // Line between consecutive points
@@ -499,8 +517,6 @@ function xpSVG(data) {
             line.setAttribute("stroke", "black");
             svg.appendChild(line);
         }
-
-        // (Removed the text label on each point to reduce clutter)
 
         // Month label (every other point)
         if (index % 2 !== 0) {
